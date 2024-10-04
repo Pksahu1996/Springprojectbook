@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resturant List</title>
+</head>
+<body>
+    <h2>Resturant List</h2>
+    <table border="1">
+        <tr>
+            <th>Item ID</th> 
+            <th>Item Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="resturant : ${listResturants}">
+            <td th:text="${resturant.itemid}"></td>
+            <td th:text="${resturant.itemname}"></td>
+            <td th:text="${resturant.price}"></td>
+            <td>
+                <a th:href="@{/showFormForUpdate/{id}(id=${resturant.itemid})}">Update</a> |
+                <a th:href="@{/deleteResturant/{id}(id=${resturant.itemid})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <a href="/showNewResturantForm">Add New Item</a>
+</body>
+</html>
